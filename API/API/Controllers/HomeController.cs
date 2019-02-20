@@ -1,4 +1,6 @@
-﻿using System;
+﻿using API.Models;
+using API.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,14 @@ namespace API.Controllers
     {
         public ActionResult Index()
         {
+            ConsumirApi consumirApi = new ConsumirApi();
+            DtoExemplo meuExemplo = new DtoExemplo();
+            meuExemplo.title = "titulo do meu post";
+            meuExemplo.body = "corpo do meu post";
+
+            var resultado = consumirApi.ObterRetornoDaAPI(meuExemplo);
+            ViewBag.Message = resultado;
+
             return View();
         }
 
